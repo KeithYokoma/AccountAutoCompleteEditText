@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AccountAutoCompleteEditText">
+        <attr name="accountType">
+            <enum name="any" value="0"/>
+            <enum name="email" value="1"/>
+            <enum name="phoneNumber" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

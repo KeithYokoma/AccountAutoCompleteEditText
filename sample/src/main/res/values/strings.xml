@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AccountAutoCompleteEditText</string>
+    <string name="label_account_type_any">Accept any type of accounts</string>
+    <string name="label_account_phone_number">Accept phone number</string>
+    <string name="label_account_email">Accept email address</string>
+</resources>
