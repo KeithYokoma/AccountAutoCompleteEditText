@@ -41,7 +41,8 @@ repositories {
 }
 android {
     dependencies {
-    compile 'jp.yokomark.widget:AccountAutoCompleteEditText:1.0.0'                        }
+        compile 'jp.yokomark.widget:AccountAutoCompleteEditText:1.0.0'
+    }
 }
 ```
 

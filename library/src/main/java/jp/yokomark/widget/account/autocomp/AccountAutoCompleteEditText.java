@@ -14,30 +14,46 @@ import jp.yokomark.widget.account.autocomp.internal.model.CandidateCollector;
  * @since 2014/03/05
  */
 public class AccountAutoCompleteEditText extends AutoCompleteTextView {
+    private AccountType mAccountType;
+
     public AccountAutoCompleteEditText(Context context) {
-        this(context, null);
+        super(context);
+
+        setUpAttributes(context, null, 0);
     }
 
     public AccountAutoCompleteEditText(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+
+        setUpAttributes(context, attrs, 0);
     }
 
     public AccountAutoCompleteEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
+        setUpAttributes(context, attrs, defStyle);
+    }
+
+    private void setUpAttributes(Context context, AttributeSet attrs, int defStyle) {
         TypedArray array = null;
-        AccountType type = null;
         try {
             array = context.obtainStyledAttributes(attrs, R.styleable.AccountAutoCompleteEditText, defStyle, 0);
-            type = AccountType.valueOf(array);
+            mAccountType = AccountType.valueOf(array);
         } finally {
             if (array != null) {
                 array.recycle();
             }
         }
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                context, android.R.layout.simple_dropdown_item_1line, CandidateCollector.getAccounts(context, type));
+                getContext(), android.R.layout.simple_dropdown_item_1line, CandidateCollector
+                .getAccounts(getContext(), mAccountType));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         setAdapter(adapter);
     }
 }

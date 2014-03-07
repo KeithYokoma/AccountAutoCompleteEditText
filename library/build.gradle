@@ -10,10 +10,6 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    release {
-        runProguard false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-    }
 }
 
 def repos = new File(rootDir, "repository")
@@ -24,7 +20,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${repos.absolutePath}"
-            pom.version = '1.0.0'
+            pom.version = '1.1.0'
             pom.groupId = 'jp.yokomark.widget'
             pom.artifactId = 'AccountAutoCompleteEditText'
         }
