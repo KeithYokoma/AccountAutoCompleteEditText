@@ -30,6 +30,10 @@ This attribute accepts any of the  following value.
 | `email` | Show the candidate account using email address. |
 | `phoneNumber` | Show the candidate account using phone number. |
 
+## Sample Application
+
+Sample app can be downloaded from [here](https://deploygate.com/distributions/7ac40a3232ff1fb7afceb7c527d6667d11f840ff).
+
 ## Download
 
 Via Gradle
