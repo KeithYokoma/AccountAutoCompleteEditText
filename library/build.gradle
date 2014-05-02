@@ -2,7 +2,7 @@ apply plugin: 'android-library'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.1"
+    buildToolsVersion "19.0.3"
 
     defaultConfig {
         minSdkVersion 8
@@ -12,17 +12,21 @@ android {
     }
 }
 
-def repos = new File(rootDir, "repository")
+android.libraryVariants.all { variant ->
+    def name = variant.buildType.name
 
-apply plugin: 'maven'
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository url: "file://${repos.absolutePath}"
-            pom.version = '1.1.0'
-            pom.groupId = 'jp.yokomark.widget'
-            pom.artifactId = 'AccountAutoCompleteEditText'
-        }
+    // Only attach a jar for non-debug build types.
+    if (!name.equals(com.android.builder.BuilderConstants.DEBUG)) {
+        def task = project.tasks.create "jar${name.capitalize()}", Jar
+        task.dependsOn variant.javaCompile
+        task.from variant.javaCompile.destinationDir
+        artifacts.add('archives', task);
     }
+}
+
+apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+
+afterEvaluate {
+    androidJavadocs.classpath += files(android.plugin.runtimeJarList)
+    androidJavadocs.classpath += project.android.libraryVariants.toList().first().javaCompile.classpath
 }
