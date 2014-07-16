@@ -41,11 +41,10 @@ Via Gradle
 ```groovy
 repositories {
     mavenCentral()
-    maven { url 'https://raw.github.com/KeithYokoma/AccountAutoCompleteEditText/master/repository/' }
 }
 android {
     dependencies {
-        compile 'jp.yokomark.widget:AccountAutoCompleteEditText:1.0.0'
+        compile 'com.github.keithyokoma:AccountAutoCompleteEditText:1.0.0'
     }
 }
 ```
