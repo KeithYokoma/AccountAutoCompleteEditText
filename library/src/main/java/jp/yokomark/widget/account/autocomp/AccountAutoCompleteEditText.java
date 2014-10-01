@@ -50,6 +50,7 @@ public class AccountAutoCompleteEditText extends AutoCompleteTextView {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
+        if (isInEditMode()) return;
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getContext(), android.R.layout.simple_dropdown_item_1line, CandidateCollector
                 .getAccounts(getContext(), mAccountType));

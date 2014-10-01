@@ -30,6 +30,10 @@ This attribute accepts any of the  following value.
 | `email` | Show the candidate account using email address. |
 | `phoneNumber` | Show the candidate account using phone number. |
 
+## Sample Application
+
+Sample app can be downloaded from [here](https://deploygate.com/distributions/7ac40a3232ff1fb7afceb7c527d6667d11f840ff).
+
 ## Download
 
 Via Gradle
@@ -37,11 +41,10 @@ Via Gradle
 ```groovy
 repositories {
     mavenCentral()
-    maven { url 'https://raw.github.com/KeithYokoma/AccountAutoCompleteEditText/master/repository/' }
 }
 android {
     dependencies {
-        compile 'jp.yokomark.widget:AccountAutoCompleteEditText:1.0.0'
+        compile 'com.github.keithyokoma:AccountAutoCompleteEditText:1.0.0'
     }
 }
 ```
